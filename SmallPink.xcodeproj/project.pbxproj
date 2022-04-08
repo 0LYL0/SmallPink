@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7DDA8CB1F1717448DDBF8C64 /* Pods_SmallPink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492C49A31AF87856054FBD4A /* Pods_SmallPink.framework */; };
 		E40A423427FFEE31000C1BA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40A423327FFEE31000C1BA0 /* AppDelegate.swift */; };
 		E40A423627FFEE31000C1BA0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40A423527FFEE31000C1BA0 /* SceneDelegate.swift */; };
 		E40A423827FFEE31000C1BA0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40A423727FFEE31000C1BA0 /* ViewController.swift */; };
@@ -18,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		21882D48CD90F0015952A8A9 /* Pods-SmallPink.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmallPink.debug.xcconfig"; path = "Target Support Files/Pods-SmallPink/Pods-SmallPink.debug.xcconfig"; sourceTree = "<group>"; };
+		31EB93B3C23608F6D24577C9 /* Pods-SmallPink.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmallPink.release.xcconfig"; path = "Target Support Files/Pods-SmallPink/Pods-SmallPink.release.xcconfig"; sourceTree = "<group>"; };
+		492C49A31AF87856054FBD4A /* Pods_SmallPink.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmallPink.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E40A423027FFEE31000C1BA0 /* SmallPink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmallPink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E40A423327FFEE31000C1BA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E40A423527FFEE31000C1BA0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,18 +39,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DDA8CB1F1717448DDBF8C64 /* Pods_SmallPink.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7FE39705BC79163B190D2231 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				492C49A31AF87856054FBD4A /* Pods_SmallPink.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E40A422727FFEE31000C1BA0 = {
 			isa = PBXGroup;
 			children = (
 				E40A424A27FFEF16000C1BA0 /* .gitignore */,
 				E40A423227FFEE31000C1BA0 /* SmallPink */,
 				E40A423127FFEE31000C1BA0 /* Products */,
+				F9D03767A350AE5E583551EE /* Pods */,
+				7FE39705BC79163B190D2231 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -73,6 +88,16 @@
 			path = SmallPink;
 			sourceTree = "<group>";
 		};
+		F9D03767A350AE5E583551EE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				21882D48CD90F0015952A8A9 /* Pods-SmallPink.debug.xcconfig */,
+				31EB93B3C23608F6D24577C9 /* Pods-SmallPink.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -80,9 +105,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E40A424727FFEE34000C1BA0 /* Build configuration list for PBXNativeTarget "SmallPink" */;
 			buildPhases = (
+				5202A0344EFAFD65F9B8AD75 /* [CP] Check Pods Manifest.lock */,
 				E40A422C27FFEE31000C1BA0 /* Sources */,
 				E40A422D27FFEE31000C1BA0 /* Frameworks */,
 				E40A422E27FFEE31000C1BA0 /* Resources */,
+				93AABA4EB84773625F2805D6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -139,6 +166,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5202A0344EFAFD65F9B8AD75 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SmallPink-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		93AABA4EB84773625F2805D6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SmallPink/Pods-SmallPink-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SmallPink/Pods-SmallPink-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SmallPink/Pods-SmallPink-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E40A422C27FFEE31000C1BA0 /* Sources */ = {
@@ -292,19 +361,23 @@
 		};
 		E40A424827FFEE34000C1BA0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 21882D48CD90F0015952A8A9 /* Pods-SmallPink.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.0.0;
 				DEVELOPMENT_TEAM = 85QG4KRLDF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SmallPink/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "小粉书";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -314,25 +387,29 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		E40A424927FFEE34000C1BA0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 31EB93B3C23608F6D24577C9 /* Pods-SmallPink.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.0.0;
 				DEVELOPMENT_TEAM = 85QG4KRLDF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SmallPink/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "小粉书";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -342,7 +419,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
