@@ -94,7 +94,6 @@
 				21882D48CD90F0015952A8A9 /* Pods-SmallPink.debug.xcconfig */,
 				31EB93B3C23608F6D24577C9 /* Pods-SmallPink.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -383,7 +382,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yalan.SmallPink;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yalan.GuidePage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -415,7 +414,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yalan.SmallPink;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yalan.GuidePage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
