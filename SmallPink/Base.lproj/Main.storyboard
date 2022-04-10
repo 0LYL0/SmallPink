@@ -46,7 +46,7 @@
         <!--发布-->
         <scene sceneID="G5l-qf-M96">
             <objects>
-                <viewController id="rHp-eA-Ibp" sceneMemberID="viewController">
+                <viewController id="rHp-eA-Ibp" customClass="PostVC" customModule="SmallPink" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TBA-Tz-3iE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -248,10 +248,10 @@
             </objects>
             <point key="canvasLocation" x="649" y="-460"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab BarC-->
         <scene sceneID="Wc4-yS-Ooj">
             <objects>
-                <tabBarController id="yoo-AS-CX4" sceneMemberID="viewController">
+                <tabBarController id="yoo-AS-CX4" customClass="TabBarC" customModule="SmallPink" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6Dh-Zc-Oo9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

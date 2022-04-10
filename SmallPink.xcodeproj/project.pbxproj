@@ -17,6 +17,9 @@
 		E40A424B27FFEF16000C1BA0 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E40A424A27FFEF16000C1BA0 /* .gitignore */; };
 		E44483952802701000EF1D37 /* WaterfallVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44483942802701000EF1D37 /* WaterfallVC.swift */; };
 		E44483972802706500EF1D37 /* WaterfallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44483962802706500EF1D37 /* WaterfallCell.swift */; };
+		E444839B28027F6700EF1D37 /* TabBarC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E444839A28027F6700EF1D37 /* TabBarC.swift */; };
+		E444839E28027FFC00EF1D37 /* PostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E444839D28027FFC00EF1D37 /* PostVC.swift */; };
+		E44483A02802804800EF1D37 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E444839F2802804800EF1D37 /* Extensions.swift */; };
 		E476499C28002CE00069B535 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E476499B28002CE00069B535 /* HomeVC.swift */; };
 		E476499E280034BF0069B535 /* FollowVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E476499D280034BF0069B535 /* FollowVC.swift */; };
 		E47649A0280034DA0069B535 /* DiscoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E476499F280034DA0069B535 /* DiscoverVC.swift */; };
@@ -39,11 +42,16 @@
 		E40A424A27FFEF16000C1BA0 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		E44483942802701000EF1D37 /* WaterfallVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterfallVC.swift; sourceTree = "<group>"; };
 		E44483962802706500EF1D37 /* WaterfallCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterfallCell.swift; sourceTree = "<group>"; };
+		E444839A28027F6700EF1D37 /* TabBarC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarC.swift; sourceTree = "<group>"; };
+		E444839D28027FFC00EF1D37 /* PostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostVC.swift; sourceTree = "<group>"; };
+		E444839F2802804800EF1D37 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E476499B28002CE00069B535 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		E476499D280034BF0069B535 /* FollowVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowVC.swift; sourceTree = "<group>"; };
 		E476499F280034DA0069B535 /* DiscoverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverVC.swift; sourceTree = "<group>"; };
 		E47649A1280034FB0069B535 /* NearbyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyVC.swift; sourceTree = "<group>"; };
 		E47649A4280035610069B535 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E477F79C280284AA001987E0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		E477F79D280284AA001987E0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,9 +99,11 @@
 				E40A423327FFEE31000C1BA0 /* AppDelegate.swift */,
 				E40A423527FFEE31000C1BA0 /* SceneDelegate.swift */,
 				E40A423927FFEE31000C1BA0 /* Main.storyboard */,
-				E47649A4280035610069B535 /* Constants.swift */,
+				E444839A28027F6700EF1D37 /* TabBarC.swift */,
 				E47649A3280035080069B535 /* 首页 */,
 				E44483982802740E00EF1D37 /* Waterfall */,
+				E444839928027F2800EF1D37 /* Common */,
+				E444839C28027FDE00EF1D37 /* Demos */,
 				E40A423F27FFEE34000C1BA0 /* Assets.xcassets */,
 				E40A424127FFEE34000C1BA0 /* LaunchScreen.storyboard */,
 				E40A424427FFEE34000C1BA0 /* Info.plist */,
@@ -109,6 +119,23 @@
 				E44483962802706500EF1D37 /* WaterfallCell.swift */,
 			);
 			path = Waterfall;
+			sourceTree = "<group>";
+		};
+		E444839928027F2800EF1D37 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				E47649A4280035610069B535 /* Constants.swift */,
+				E444839F2802804800EF1D37 /* Extensions.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		E444839C28027FDE00EF1D37 /* Demos */ = {
+			isa = PBXGroup;
+			children = (
+				E444839D28027FFC00EF1D37 /* PostVC.swift */,
+			);
+			path = Demos;
 			sourceTree = "<group>";
 		};
 		E47649A3280035080069B535 /* 首页 */ = {
@@ -175,6 +202,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = E40A422727FFEE31000C1BA0;
 			productRefGroup = E40A423127FFEE31000C1BA0 /* Products */;
@@ -248,11 +276,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E40A423E27FFEE31000C1BA0 /* SmallPink.xcdatamodeld in Sources */,
+				E444839B28027F6700EF1D37 /* TabBarC.swift in Sources */,
 				E44483952802701000EF1D37 /* WaterfallVC.swift in Sources */,
 				E44483972802706500EF1D37 /* WaterfallCell.swift in Sources */,
 				E476499C28002CE00069B535 /* HomeVC.swift in Sources */,
 				E476499E280034BF0069B535 /* FollowVC.swift in Sources */,
+				E444839E28027FFC00EF1D37 /* PostVC.swift in Sources */,
 				E40A423427FFEE31000C1BA0 /* AppDelegate.swift in Sources */,
+				E44483A02802804800EF1D37 /* Extensions.swift in Sources */,
 				E40A423627FFEE31000C1BA0 /* SceneDelegate.swift in Sources */,
 				E47649A0280034DA0069B535 /* DiscoverVC.swift in Sources */,
 				E47649A2280034FB0069B535 /* NearbyVC.swift in Sources */,
@@ -267,6 +298,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				E40A423A27FFEE31000C1BA0 /* Base */,
+				E477F79C280284AA001987E0 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -275,6 +307,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				E40A424227FFEE34000C1BA0 /* Base */,
+				E477F79D280284AA001987E0 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -286,6 +319,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -347,6 +381,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
