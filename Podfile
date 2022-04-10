@@ -8,6 +8,7 @@ target 'SmallPink' do
   
   # Pods for SmallPink
   pod 'XLPagerTabStrip', '~> 9.0'
+  pod 'CHTCollectionViewWaterfallLayout'
 
 
 end
