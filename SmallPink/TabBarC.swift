@@ -21,6 +21,7 @@ class TabBarC: UITabBarController, UITabBarControllerDelegate{
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         if viewController is PostVC{
             
+            
             //待做(判断是否登录)
             
             var config = YPImagePickerConfiguration()
