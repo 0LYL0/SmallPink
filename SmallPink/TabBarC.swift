@@ -42,7 +42,7 @@ class TabBarC: UITabBarController, UITabBarControllerDelegate{
             // MARK: 相册配置
             config.library.defaultMultipleSelection = true //是否可多选
             config.library.maxNumberOfItems = kMaxPhotoCount //最大选取照片或视频数
-            config.library.spacingBetweenItems = 2 //照片缩略图之间的间距
+            config.library.spacingBetweenItems = kSpacingBetweenItems //照片缩略图之间的间距
             
             // MARK: 视频配置(参照文档,此处全部默认)
             
@@ -56,6 +56,14 @@ class TabBarC: UITabBarController, UITabBarControllerDelegate{
             picker.didFinishPicking { [unowned picker] items, cancelled in
                 if cancelled{
 //                    print("用户按了左上角的取消按钮")
+                }
+                for item in items{
+                    switch item {
+                    case let .photo(photo):
+                        print(photo)
+                    case .video(let video):
+                        print(video)
+                    }
                 }
                 picker.dismiss(animated: true, completion: nil)
             }
