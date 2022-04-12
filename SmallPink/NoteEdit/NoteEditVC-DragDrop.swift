@@ -13,6 +13,7 @@ extension NoteEditVC: UICollectionViewDragDelegate{
         let dragItem = UIDragItem(itemProvider: NSItemProvider(object: photo))
         dragItem.localObject = photo
         return [dragItem]
+        
     }
 }
 extension NoteEditVC: UICollectionViewDropDelegate{
