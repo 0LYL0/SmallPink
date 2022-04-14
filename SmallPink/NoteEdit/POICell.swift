@@ -9,6 +9,16 @@ import UIKit
 
 class POICell: UITableViewCell {
 
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    var poi = ["", ""]{
+        didSet{
+            titleLabel.text = poi[0]
+            addressLabel.text = poi[1]
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
