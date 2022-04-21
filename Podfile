@@ -17,5 +17,9 @@ target 'SmallPink' do
   pod 'AMapSearch'
   pod 'MJRefresh'
   pod 'DateToolsSwift'
+  pod 'JVerification'
+  pod 'Alamofire'
+  pod 'AlipaySDK-iOS'
+  pod 'LeanCloud'
 
 end

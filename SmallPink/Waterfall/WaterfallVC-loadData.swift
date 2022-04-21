@@ -21,8 +21,17 @@ extension WaterfallVC{
         request.sortDescriptors = [sortDescriptor1]
         
 //        request.returnsDistinctResults
+        showLoadHUD()
+        backgroundContext.perform {
+            if let draftNotes = try? backgroundContext.fetch(request){
+                self.draftNotes = draftNotes
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            }
+            self.hideLoadHUD()
+        }
         
-        let draftNotes = try! context.fetch(request)
-        self.draftNotes = draftNotes
+        
     }
 }

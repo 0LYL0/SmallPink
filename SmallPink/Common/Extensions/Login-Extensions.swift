@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Alamofire
 extension UIViewController{
     @objc func localLogin(){
         showLoadHUD()
@@ -22,14 +23,53 @@ extension UIViewController{
                         self.presentLocalLoginVC()
                          
                     }else{
+                        
 //                        print("预取号失败,错误码:\(result!["code"]),错误描述:\(result!["content"])")
                     }
                 }
             }else{
                 self.hideLoadHUD()
+                self.presentCodeLoginVC()
             }
         }
         JVERIFICATIONService.setup(with: config)
+    }
+    
+    @objc private func otherLogin(){
+        JVERIFICATIONService.dismissLoginController(animated: true) {
+            self.presentCodeLoginVC()
+        }
+       
+    }
+    @objc private func dismissLocalLoginVC(){
+        JVERIFICATIONService.dismissLoginController(animated: true, completion: nil)
+    }
+    // MARK: 一般函数
+    private func presentCodeLoginVC(){
+        let mainSB = UIStoryboard(name: "Main", bundle: nil)
+        let loginNaviC = mainSB.instantiateViewController(withIdentifier: kLoginNavID)
+        loginNaviC.modalPresentationStyle = .fullScreen
+        self.present(loginNaviC, animated: true, completion: nil)
+    }
+    
+    // MARK: 弹出一键登录页+用户点击登录后
+    private func presentLocalLoginVC(){
+        JVERIFICATIONService.getAuthorizationWith(self, hide: true, animated: true, timeout: 5*1000, completion: { (result) in
+            if let result = result, let loginToken = result["loginToken"] as? String{
+                //一键登录成功
+                print("loginToken: \(loginToken)")
+                JVERIFICATIONService.clearPreLoginCache()
+//                self.getEncryptedPhoneNum(loginToken)
+              
+            }else{
+                print("一键登录失败")
+                self.otherLogin()
+            }
+        }) { (type, content) in
+            if let content = content {
+                print("一键登录 actionBlock :type = \(type), content = \(content)")
+            }
+        }
     }
     
     private func setLocalLoginUI(){
@@ -95,29 +135,32 @@ extension UIViewController{
             ])
         }
     }
+}
+
+extension UIViewController{
     
-    @objc private func otherLogin(){
-        print("xx")
-    }
-    @objc private func dismissLocalLoginVC(){
-        JVERIFICATIONService.dismissLoginController(animated: true, completion: nil)
+    struct LocalLoginRes: Decodable{
+        let phone: String
     }
     
-    // MARK: 弹出一键登录页+用户点击登录后
-    private func presentLocalLoginVC(){
-        JVERIFICATIONService.getAuthorizationWith(self, hide: true, animated: true, timeout: 5*1000, completion: { (result) in
-            if let result = result, let token = result["loginToken"] {
-                //一键登录成功
-                JVERIFICATIONService.clearPreLoginCache()
-                
-              
-            }else{
-                print("一键登录失败")
+    private func getEncryptedPhoneNum(_ loginToken: String){
+        let headers: HTTPHeaders = [
+            .authorization(username: kJAppKey, password: "")
+        ]
+        
+        let parameters = ["loginToken": loginToken]
+        
+        AF.request("https://api.verification.jpush.cn/v1/web/loginTokenVerify",
+                   method: .post,
+                   parameters: parameters,
+                   encoder: JSONParameterEncoder.default,
+                   headers: headers
+        ).responseDecodable(of: LocalLoginRes.self) { response in
+            if let localLoginRes = response.value{
+                print(localLoginRes.phone)
             }
-        }) { (type, content) in
-            if let content = content {
-                print("一键登录 actionBlock :type = \(type), content = \(content)")
-            }
+            
         }
+        
     }
 }

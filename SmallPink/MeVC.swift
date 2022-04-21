@@ -11,6 +11,10 @@ class MeVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        navigationItem.backButtonTitle = ""
+        navigationItem.backButtonDisplayMode = .minimal
+//        navigationController?.navigationBar.tintColor = .label
 
         // Do any additional setup after loading the view.
     }

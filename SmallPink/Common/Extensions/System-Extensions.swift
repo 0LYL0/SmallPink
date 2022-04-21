@@ -14,7 +14,25 @@ extension String{
     var isBlank: Bool{
         self.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
+    var isPhoneNum: Bool{
+        Int(self) != nil && NSRegularExpression(KPhoneRegEx).matches(self)
+    }
+    
 }
+extension NSRegularExpression {
+    convenience init(_ pattern: String) {
+        do {
+            try self.init(pattern: pattern)
+        } catch {
+            fatalError("非法的正则表达式")//因不能确保调用父类的init函数
+        }
+    }
+    func matches(_ string: String) -> Bool {
+        let range = NSRange(location: 0, length: string.utf16.count)
+        return firstMatch(in: string, options: [], range: range) != nil
+    }
+}
+
 extension Optional where Wrapped == String{
     var unwrappedText: String{
         self ?? ""
@@ -59,6 +77,18 @@ extension URL{
         } catch {
             return imagePH
         }
+    }
+}
+
+extension UIButton{
+    func setToEnabled(){
+        isEnabled = true
+        backgroundColor = mainColor
+    }
+    
+    func setToDisabled(){
+        isEnabled = false
+        backgroundColor = mainLightColor
     }
 }
 

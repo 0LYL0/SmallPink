@@ -18,7 +18,14 @@ class WaterfallVC: UICollectionViewController, CHTCollectionViewDelegateWaterfal
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        config()
+        loadDriftNotes()
+        
+//        print(NSHomeDirectory())
+//        FileManager.default.save(UIImage(named: "1")?.pngData(), to: "testDir", as: "test")
+//        
+    }
+    func config(){
         let layout = collectionView.collectionViewLayout as! CHTCollectionViewWaterfallLayout
         
         layout.columnCount = 2
@@ -26,15 +33,14 @@ class WaterfallVC: UICollectionViewController, CHTCollectionViewDelegateWaterfal
         layout.minimumInteritemSpacing = kWaterfallPadding
         layout.sectionInset = UIEdgeInsets(top: 0, left: kWaterfallPadding, bottom: kWaterfallPadding, right: kWaterfallPadding)
         
+//        if isMyDraft{
+//            layout.sectionInset = UIEdgeInsets(top: 44, left: kWaterfallPadding, bottom: kWaterfallPadding, right: kWaterfallPadding)
+//        }
         if isMyDraft{
-            layout.sectionInset = UIEdgeInsets(top: 44, left: kWaterfallPadding, bottom: kWaterfallPadding, right: kWaterfallPadding)
+            navigationItem.title = "本地草稿"
         }
         
-        loadDriftNotes()
         
-//        print(NSHomeDirectory())
-//        FileManager.default.save(UIImage(named: "1")?.pngData(), to: "testDir", as: "test")
-//        
     }
 
 
@@ -86,21 +92,29 @@ class WaterfallVC: UICollectionViewController, CHTCollectionViewDelegateWaterfal
     }
     
     @objc func deleteDraftNote(_ sender: UIButton){
-        print(sender.tag)
+//        print(sender.tag)
         let index = sender.tag
         
         let alert = UIAlertController(title: "提示", message: "确认删除该草稿吗?", preferredStyle: .alert)
         let action1 = UIAlertAction(title: "取消", style: .cancel)
         let action2 = UIAlertAction(title: "确认", style: .destructive) { _ in
-            //数据
-            let draftNote = self.draftNotes[index]
-            context.delete(draftNote)
-            appDelegate.saveContext()
-            self.draftNotes.remove(at: sender.tag)
-            //UI
-            self.collectionView.performBatchUpdates {
-                self.collectionView.deleteItems(at: [IndexPath(item: sender.tag, section: 0)])
+            backgroundContext.perform {
+                //数据
+                let draftNote = self.draftNotes[index]
+                backgroundContext.delete(draftNote)
+                appDelegate.savaBackgroundContext()
+                
+                //UI
+                DispatchQueue.main.async {
+                    self.draftNotes.remove(at: sender.tag)
+                    self.collectionView.performBatchUpdates {
+                        self.collectionView.deleteItems(at: [IndexPath(item: sender.tag, section: 0)])
+                    }
+                    self.collectionView.reloadData()
+                    self.showTextHUD("删除草稿成功")
+                }
             }
+           
         }
         alert.addAction(action1)
         alert.addAction(action2)
@@ -108,7 +122,7 @@ class WaterfallVC: UICollectionViewController, CHTCollectionViewDelegateWaterfal
     }
     
     // MARK: UICollectionViewDelegate
-    override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if isMyDraft{
            let draftNote = draftNotes[indexPath.item]
             if let phptosData = draftNote.photos,
@@ -122,6 +136,10 @@ class WaterfallVC: UICollectionViewController, CHTCollectionViewDelegateWaterfal
                 vc.draftNote = draftNote
                 vc.photos = photos
                 vc.videoURL = videoURL
+                vc.updateDraftNoteFinished = {
+                    self.loadDriftNotes()
+                    self.collectionView.reloadData()
+                }
                 navigationController?.pushViewController(vc, animated: true)
                 
             }else{

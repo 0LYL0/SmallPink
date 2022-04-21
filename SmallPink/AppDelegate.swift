@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import LeanCloud
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -77,6 +78,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    func savaBackgroundContext(){
+        if backgroundContext.hasChanges{
+            do {
+                try backgroundContext.save()
+            } catch {
+                fatalError("后台存储数据失败:\(error)")
+            }
+        }
+    }
 
 }
 
@@ -84,7 +94,21 @@ extension AppDelegate{
     private func config(){
         //高德地图
         AMapServices.shared().enableHTTPS = true
-        AMapServices.shared().apiKey = "3b316aa3ba23ec7a06d76b89366420da"
+        AMapServices.shared().apiKey = kMapApiKey
+        
+        //UI
+        UINavigationBar.appearance().tintColor = .label
+        
+        //初始化leanCloud
+        LCApplication.logLevel = .off
+        do {
+            try LCApplication.default.set(
+                id: kLCAppID,
+                key: kLCAppKey,
+                serverURL: kLCServerURL)
+        } catch {
+            print(error)
+        }
     }
 }
 

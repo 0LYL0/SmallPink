@@ -13,6 +13,8 @@ class NoteEditVC: UIViewController {
     
     var draftNote: DraftNote?
     
+    var updateDraftNoteFinished: (() -> ())?
+    
     var photos = [
         UIImage(named: "1")!, UIImage(named: "2")!
     ]
@@ -49,6 +51,7 @@ class NoteEditVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         config()
+        setUI()
        
     }
     func config(){
@@ -123,37 +126,85 @@ class NoteEditVC: UIViewController {
     
     @IBAction func saveDraftNote(_ sender: Any) {
         
-        guard textViewIAView.currentTextCount <= kMaxNoteTextCount else {
-            showTextHUD("标题最多输入\(kMaxNoteTitleCount)字")
-            return
-        }
-        let draftNote = DraftNote(context: context)
-        if isVideo{
-            draftNote.video = try? Data(contentsOf: videoURL!)
-        }
-        draftNote.coverPhoto = photos[0].jpeg(.high)
-
-        var photos: [Data] = []
-        for photo in self.photos {
-            if let pngData = photo.pngData(){
-                photos.append(pngData)
-            }
-        }
-        draftNote.photos = try? JSONEncoder().encode(photos)
+        guard isValidateNote() else { return }
         
-        draftNote.isVideo = isVideo
-        draftNote.title = titleTextField.exactText
-        draftNote.text = textView.exactText
-        draftNote.channel = channel
-        draftNote.subChannel = subChannel
-        draftNote.poiName = poiName
-        draftNote.updateAt = Date()
-        
-        appDelegate.saveContext()
+        if let draftNote = draftNote {
+            updateDraftNote(draftNote)
+        }else{
+            creatDraftNote()
+        }
+       
     }
     
     @IBAction func postNote(_ sender: Any) {
-        
+        guard isValidateNote() else { return }
+    }
+    // MARK: 新创建的笔记
+    func creatDraftNote(){
+        backgroundContext.perform{
+            let draftNote = DraftNote(context: backgroundContext)
+            if self.isVideo{
+                draftNote.video = try? Data(contentsOf: self.videoURL!)
+            }
+            draftNote.coverPhoto = self.photos[0].jpeg(.high)
+
+            var photos: [Data] = []
+            for photo in self.photos {
+                if let pngData = photo.pngData(){
+                    photos.append(pngData)
+                }
+            }
+            draftNote.photos = try? JSONEncoder().encode(photos)
+            
+            draftNote.isVideo = self.isVideo
+            DispatchQueue.main.async {
+                draftNote.title = self.titleTextField.exactText
+                draftNote.text = self.textView.exactText
+            }
+            draftNote.channel = self.channel
+            draftNote.subChannel = self.subChannel
+            draftNote.poiName = self.poiName
+            draftNote.updateAt = Date()
+            
+            appDelegate.savaBackgroundContext()
+            DispatchQueue.main.async {
+                self.showTextHUD("保存草稿成功", false)
+            }
+        }
+        dismiss(animated: true)
+    }
+    // MARK: 更新笔记
+    func updateDraftNote(_ draftNote: DraftNote){
+        backgroundContext.perform{
+            if !self.isVideo{
+                draftNote.coverPhoto = self.photos[0].jpeg(.high)
+                var photos: [Data] = []
+                for photo in self.photos{
+                    if let pngData = photo.pngData(){
+                        photos.append(pngData)
+                    }
+                }
+                draftNote.photos = try? JSONEncoder().encode(photos)
+            }
+            
+            DispatchQueue.main.async {
+                draftNote.title = self.titleTextField.exactText
+                draftNote.text = self.textView.exactText
+            }
+            draftNote.channel = self.channel
+            draftNote.subChannel = self.subChannel
+            draftNote.poiName = self.poiName
+            draftNote.updateAt = Date()
+            
+            appDelegate.savaBackgroundContext()
+            
+            DispatchQueue.main.async {
+                self.updateDraftNoteFinished?()
+//                self.showTextHUD("保存草稿成功")
+            }
+            
+        }
+        navigationController?.popViewController(animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -194,10 +245,7 @@ extension NoteEditVC: ChannelVCDelegate{
         print(channel, subChannel)
         self.channel = channel
         self.subChannel = subChannel
-        channelLabel.text = subChannel
-        channelIcon.tintColor = blueColor
-        channelLabel.textColor = blueColor
-        channelPlaceholderLabel.isHidden = true
+        updateChannelUI()
     }
 }
 
@@ -205,15 +253,10 @@ extension NoteEditVC: POIVCDelegate{
     func updatePOIName(_ name: String) {
         if name == kPOIsInitArr[0][0]{
             poiName = ""
-            poiNameIcon.tintColor = .label
-            poiNameLabel.text = "添加地点"
-            poiNameLabel.textColor = .label
         }else{
             self.poiName = name
-            poiNameLabel.text = self.poiName
-            poiNameLabel.textColor = blueColor
-            poiNameIcon.tintColor = blueColor
         }
+        updatePOINameUI()
     }
 }
 

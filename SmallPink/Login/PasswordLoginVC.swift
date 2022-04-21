@@ -15,7 +15,13 @@ class PasswordLoginVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func dismiss(_ sender: Any) {
+        dismiss(animated: true)
+    }
+    
+    @IBAction func backToCodeLoginVC(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
     /*
     // MARK: - Navigation
 
