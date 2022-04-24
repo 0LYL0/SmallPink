@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import LeanCloud
 
 class MeVC: UIViewController {
 
@@ -19,7 +20,19 @@ class MeVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func logoutTest(_ sender: Any) {
+        LCUser.logOut()
+        let loginVC = storyboard!.instantiateViewController(withIdentifier: kLoginVCID)
+        loginAndMeParentVC.removeChildren()
+        loginAndMeParentVC.add(child: loginVC)
+    }
+    
+    @IBAction func showDraftNotes(_ sender: Any) {
+        let navi = storyboard!.instantiateViewController(withIdentifier: kDraftNotesNavID)
+        navi.modalPresentationStyle = .fullScreen
+        present(navi, animated: true)
+    }
+    
     /*
     // MARK: - Navigation
 
