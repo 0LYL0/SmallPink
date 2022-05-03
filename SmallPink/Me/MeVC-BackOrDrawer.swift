@@ -6,3 +6,13 @@
 //
 
 import Foundation
+import UIKit
+extension MeVC{
+    @objc func backOrDrawer(_ sender: UIButton){
+        if isFromNote{
+            dismiss(animated: true, completion: nil)
+        }else{
+            
+        }
+    }
+}

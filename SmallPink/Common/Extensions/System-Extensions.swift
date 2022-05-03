@@ -10,6 +10,21 @@ import AVFoundation
 import MBProgressHUD
 import DateToolsSwift
 
+extension Int{
+    var formattedStr: String{
+        let num = Double(self)
+        let tenThousand = num / 10_000
+        let hundredMillion = num / 100_000_000
+        if tenThousand < 1{
+            return "\(self)"
+        }else if hundredMillion >= 1{
+            return "\(round(hundredMillion * 10) / 10)亿"
+        }else{
+            return "\(round(tenThousand * 10) / 10)万"
+        }
+    }
+}
+
 extension String{
     var isBlank: Bool{
         self.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
@@ -17,7 +32,27 @@ extension String{
     var isPhoneNum: Bool{
         Int(self) != nil && NSRegularExpression(KPhoneRegEx).matches(self)
     }
-    
+    var isAuthCode: Bool{
+        Int(self) != nil && NSRegularExpression(KAuthCodeRegEx).matches(self)
+    }
+    static func randomString(_ length: Int) -> String{
+        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        return String((0..<length).map{_ in letters.randomElement()! })
+    }
+    func spliceAttrStr(_ dateStr: String) -> NSMutableAttributedString{
+        let attrText = toAttrStr()
+        let attrDate = " \(dateStr)".toAttrStr(12, .secondaryLabel)
+        
+        attrText.append(attrDate)
+        return attrText
+    }
+    func toAttrStr(_ fontSize: CGFloat = 14, _ color: UIColor = .label) -> NSMutableAttributedString{
+        let attr: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: fontSize),
+            .foregroundColor: color
+        ]
+        return NSMutableAttributedString(string: self, attributes: attr)
+    }
 }
 extension NSRegularExpression {
     convenience init(_ pattern: String) {
@@ -90,6 +125,12 @@ extension UIButton{
         isEnabled = false
         backgroundColor = mainLightColor
     }
+    
+    func makeCapsule(_ color: UIColor = .label){
+        layer.cornerRadius = frame.height / 2
+        layer.borderWidth = 1
+        layer.borderColor = color.cgColor
+    }
 }
 
 extension UIImage{
@@ -121,6 +162,7 @@ extension UITextField{
     var exactText: String{
         unwrappedText.isBlank ? "" : unwrappedText
     }
+    var isBlank: Bool { unwrappedText.isBlank }
 }
 extension UITextView{
     var unwrappedText: String{
@@ -129,6 +171,7 @@ extension UITextView{
     var exactText: String{
         unwrappedText.isBlank ? "" : unwrappedText
     }
+    var isBlank: Bool { unwrappedText.isBlank }
 }
 
 extension UIView{
@@ -138,7 +181,21 @@ extension UIView{
             layer.cornerRadius
         }
         set{
+            clipsToBounds = true
             layer.cornerRadius = newValue
+        }
+    }
+}
+extension UIAlertAction{
+    func setTitleColor(_ color: UIColor){
+        setValue(color, forKey: "titleTextColor")
+    }
+    var titleTextColor: UIColor? {
+        get{
+            value(forKey: "titleTextColor") as? UIColor
+        }
+        set{
+            setValue(newValue, forKey: "titleTextColor")
         }
     }
 }
@@ -168,6 +225,16 @@ extension UIViewController{
         hud.detailsLabel.text = subTitle
         hud.hide(animated: true, afterDelay: 2)
     }
+    func showLoginHUD(){
+        showLoginHUD()
+    }
+    func showTextHUD(_ title: String, in view: UIView, _ subTitle: String? = nil){
+        let hud = MBProgressHUD.showAdded(to: view, animated: true)
+        hud.mode = .text
+        hud.label.text = title
+        hud.detailsLabel.text = subTitle
+        hud.hide(animated: true, afterDelay: 2)
+    }
     
     // MARK: 点击空白收起软键盘
     func hideKeyboardWhenTappedAround(){
@@ -178,6 +245,26 @@ extension UIViewController{
     @objc func dismissKeyboard(){
         view.endEditing(true)
     }
+    
+    func add(child vc: UIViewController){
+        addChild(vc)
+        vc.view.frame = view.bounds
+        view.addSubview(vc.view)
+        vc.didMove(toParent: self)
+    }
+    func remove(child vc: UIViewController){
+        vc.willMove(toParent: nil)
+        vc.view.removeFromSuperview()
+        vc.removeFromParent()
+    }
+    func removeChildren(){
+        if !children.isEmpty{
+            for vc in children{
+                remove(child: vc)
+            }
+        }
+    }
+    
     
 }
 
@@ -221,5 +308,14 @@ extension FileManager{
             }
         }
         return fileURL
+    }
+}
+// MARK: UserDefaults
+extension UserDefaults{
+    static func increase(_ key: String, by val: Int = 1){
+        standard.set(standard.integer(forKey: key) + val, forKey: key)
+    }
+    static func decrease(_ key: String, by val: Int = 1){
+        standard.set(standard.integer(forKey: key) - val, forKey: key)
     }
 }

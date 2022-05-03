@@ -5,4 +5,8 @@
 //  Created by yalan on 2022/5/2.
 //
 
-import Foundation
+import LeanCloud
+
+class UIPassableTapGestureRecognizer: UITapGestureRecognizer{
+    var passObj: LCUser?
+}

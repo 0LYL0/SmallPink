@@ -6,7 +6,8 @@
 //
 
 import UIKit
-
+import LeanCloud
+import simd
 private let totalTime = 3
 
 class CodeLoginVC: UIViewController {
@@ -23,6 +24,9 @@ class CodeLoginVC: UIViewController {
     private var phoneNumStr: String {
         phoneNumTF.unwrappedText
     }
+    private var authCodeStr: String{
+        authCodeTF.unwrappedText
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +36,7 @@ class CodeLoginVC: UIViewController {
         loginBtn.setToDisabled()
         
         phoneNumTF.delegate = self
+        authCodeTF.delegate = self
         
 
         
@@ -45,19 +50,65 @@ class CodeLoginVC: UIViewController {
         dismiss(animated: true)
     }
     
-    @IBAction func TFEditingChange(_ sender: Any) {
-        getAuthCodeBtn.isHidden = !phoneNumStr.isPhoneNum
+    @IBAction func TFEditingChange(_ sender: UITextField) {
+        if sender == phoneNumTF{
+            getAuthCodeBtn.isHidden = !phoneNumStr.isPhoneNum && getAuthCodeBtn.isEnabled
+        }
+        if phoneNumStr.isPhoneNum && authCodeStr.isAuthCode{
+            loginBtn.setToEnabled()
+        }else{
+            loginBtn.setToDisabled()
+        }
+       
     }
     
     
     @IBAction func getAuthCode(_ sender: Any) {
         getAuthCodeBtn.isEnabled = false
         getAuthCodeBtn.setTitle("重新发送(\(timeRemain)s)", for: .disabled)
-        
+        authCodeTF.becomeFirstResponder()
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(changeAuthCodeBtnText), userInfo: nil, repeats: true)
+        
+        let variables: LCDictionary = [
+            "ttl": LCNumber(5),         // 验证码有效时间为 10 分钟
+            "name": LCString("小粉书"), // 应用名称
+            //           "op": LCString("某种操作")    // 操作名称
+        ]
+        _ = LCSMSClient.requestShortMessage(
+            mobilePhoneNumber: phoneNumStr,
+            templateName: "",
+            signatureName: "",
+            variables: variables) { (result) in
+                //           switch result {
+                //           case .success:
+                //               break
+                //           case .failure(error: let error):
+                //               print(error)
+                //           }
+                if case let .failure(error: error) = result{
+                    print(error.reason ?? "短信验证码未知错误")
+                }
+            }
     }
     
-    @IBAction func login(_ sender: Any) {
+    @IBAction func login(_ sender: UIButton) {
+        view.endEditing(true)
+        showLoadHUD()
+        LCUser.signUpOrLogIn(mobilePhoneNumber: phoneNumStr, verificationCode: authCodeStr, completion: { result in
+           
+            switch result{
+            case .success(object: let user):
+                print(user)
+                let randomNickName = "小粉书\(String.randomString(6))"
+                self.configAfterLogin(user, randomNickName)
+                
+            case .failure(error: let error):
+                self.hideLoadHUD()
+                DispatchQueue.main.async {
+                    self.showTextHUD("登录失败", true, error.reason)
+                }
+            }
+        })
     }
     
 }
@@ -70,6 +121,17 @@ extension CodeLoginVC: UITextFieldDelegate{
             showTextHUD("最多只能输入\(limit)位哦")
         }
         return !isExceed
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == phoneNumTF{
+            authCodeTF.becomeFirstResponder()
+        }else{
+            if loginBtn.isEnabled{
+                login(loginBtn)
+            }
+        }
+        return true
     }
 }
 
@@ -84,6 +146,8 @@ extension CodeLoginVC{
             timeRemain = totalTime
             getAuthCodeBtn.isEnabled = true
             getAuthCodeBtn.setTitle("发送验证码", for: .normal)
+            
+            getAuthCodeBtn.isHidden = !phoneNumStr.isPhoneNum
         }
     }
     

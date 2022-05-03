@@ -8,8 +8,9 @@
 import Foundation
 import UIKit
 import Alamofire
+
 extension UIViewController{
-    @objc func localLogin(){
+     func localLogin(){
         showLoadHUD()
         let config = JVAuthConfig()
         config.appKey = kJAppKey
@@ -23,7 +24,8 @@ extension UIViewController{
                         self.presentLocalLoginVC()
                          
                     }else{
-                        
+                        print("当前设备不可使用一键登录")
+                        self.presentCodeLoginVC()
 //                        print("预取号失败,错误码:\(result!["code"]),错误描述:\(result!["content"])")
                     }
                 }
@@ -45,7 +47,7 @@ extension UIViewController{
         JVERIFICATIONService.dismissLoginController(animated: true, completion: nil)
     }
     // MARK: 一般函数
-    private func presentCodeLoginVC(){
+    func presentCodeLoginVC(){
         let mainSB = UIStoryboard(name: "Main", bundle: nil)
         let loginNaviC = mainSB.instantiateViewController(withIdentifier: kLoginNavID)
         loginNaviC.modalPresentationStyle = .fullScreen

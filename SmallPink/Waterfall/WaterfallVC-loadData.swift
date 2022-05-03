@@ -7,6 +7,8 @@
 
 import Foundation
 import CoreData
+import LeanCloud
+
 extension WaterfallVC{
     func loadDriftNotes(){
         let request = DraftNote.fetchRequest() as NSFetchRequest<DraftNote>
@@ -29,9 +31,80 @@ extension WaterfallVC{
                     self.collectionView.reloadData()
                 }
             }
+            DispatchQueue.main.async {
+                self.header.endRefreshing()
+            }
             self.hideLoadHUD()
         }
         
         
+    }
+    @objc func getNotes(){
+        let query = LCQuery(className: kNoteTable)
+        
+        query.whereKey(kChannelCol, .equalTo(channel))
+        query.whereKey(kAuthorCol, .included)
+        query.whereKey(kUpdatedAtCol, .descending)
+        query.limit = kNotesOffSet
+        
+        query.find { result in
+            if case let .success(objects: notes) = result{
+                self.notes = notes
+                
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            }
+            DispatchQueue.main.async {
+                self.header.endRefreshing()
+            }
+        }
+    }
+    @objc func getMyNotes(){
+        let query = LCQuery(className: kNoteTable)
+        
+        query.whereKey(kAuthorCol, .equalTo(user!))
+        query.whereKey(kAuthorCol, .included)
+        query.whereKey(kUpdatedAtCol, .descending)
+        query.limit = kNotesOffSet
+        
+        query.find { result in
+            if case let .success(objects: notes) = result{
+                self.notes = notes
+                
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            }
+            DispatchQueue.main.async {
+                self.header.endRefreshing()
+            }
+        }
+    }
+    @objc func getMyFavNotes(){
+        getLikeOrFav(kUserFavTable)
+    }
+    @objc func getMyLikeNotes(){
+        getLikeOrFav(kUserLikeTable)
+    }
+    private func getLikeOrFav(_ className: String){
+        let query = LCQuery(className: className)
+        query.whereKey(kUserCol, .equalTo(user!))
+        query.whereKey(kNoteCol, .selected)
+        query.whereKey(kNoteCol, .included)
+        query.whereKey("\(kNoteCol).\(kAuthorCol)", .included)
+        query.whereKey(kUpdatedAtCol, .descending)
+        query.limit = kNotesOffSet
+        query.find { res in
+            if case let .success(objects: userLikeOrFavs) = res{
+                self.notes = userLikeOrFavs.compactMap{ $0.get(kNoteCol) as? LCObject }
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            }
+            DispatchQueue.main.async {
+                self.header.endRefreshing()
+            }
+        }
     }
 }

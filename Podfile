@@ -21,5 +21,12 @@ target 'SmallPink' do
   pod 'Alamofire'
   pod 'AlipaySDK-iOS'
   pod 'LeanCloud'
+  pod 'PopupDialog', '~> 1.1'
+  pod 'FaveButton'
+  pod 'ImageSlideshow', '~> 1.9.0'
+  pod 'Kingfisher', '~> 6.0'
+  pod "ImageSlideshow/Kingfisher"
+  pod 'GrowingTextView', '0.7.2'
+  pod 'SegementSlide', '3.0.1'
 
 end

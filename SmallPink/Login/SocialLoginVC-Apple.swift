@@ -7,6 +7,7 @@
 
 import Foundation
 import AuthenticationServices
+import LeanCloud
 extension SocialLoginVC: ASAuthorizationControllerDelegate{
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         switch authorization.credential {
@@ -36,6 +37,26 @@ extension SocialLoginVC: ASAuthorizationControllerDelegate{
                   let authorizationCode = appleIDCredential.authorizationCode else { return }
             
             print(String(decoding: identityToken, as: UTF8.self))
+            //在leanCloud配置apple
+            let appleData: [String: Any] = [
+                "uid": userID,
+                "identity_token": String(decoding: identityToken, as: UTF8.self),
+                "code": String(decoding: authorizationCode, as: UTF8.self)
+            ]
+            let user = LCUser()
+            user.logIn(authData: appleData, platform: .apple){ result in
+                switch result {
+                case .success:
+//                    assert(user.objectId != nil)
+                    self.configAfterLogin(user, name, email)
+                case .failure(let error):
+//                    print(error)
+                    DispatchQueue.main.async {
+                        self.showTextHUD("登录失败", in: self.parent!.view, error.reason)
+                    }
+                }
+                
+            }
             
         case let passwordCredential as ASPasswordCredential:
             print(passwordCredential)

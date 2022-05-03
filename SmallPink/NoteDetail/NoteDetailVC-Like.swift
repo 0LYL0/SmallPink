@@ -15,7 +15,18 @@ extension NoteDetailVC{
             //数据
             NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(likeBtnTappedWhenLogin), object: nil)
             perform(#selector(likeBtnTappedWhenLogin), with: nil, afterDelay: 1)
-            
+   
+        }else{
+            showLoginHUD()
+        }
+    }
+    
+    @objc private func likeBtnTappedWhenLogin(){
+        if likeCount != currentLikeCount{
+            let user = LCApplication.default.currentUser!
+            let authorObjectId = author?.objectId?.stringValue ?? ""
+            let offset = isLike ? 1 : -1
+            currentLikeCount += offset
             if isLike{
                 //userLike中间表
                 let userLike = LCObject(className: kUserLikeTable)
@@ -24,6 +35,9 @@ extension NoteDetailVC{
                 userLike.save{ _ in }
                 //点赞数
                 try? note.increase(kLikeCountCol)
+                
+                LCObject.userInfo(where: authorObjectId, increase: kLikeCountCol)
+                
 //                try? author?.increase(kLikeCountCol)
             }else{
                 //userLike中间表
@@ -40,17 +54,10 @@ extension NoteDetailVC{
                 note.save{ _ in }
 //                try? author?.set(kLikeCountCol, value: likeCount)
 //                author?.save{ _ in }
+                LCObject.userInfo(where: authorObjectId, decrease: kLikeCountCol, to: likeCount)
             }
-           
-        }else{
-            showTextHUD("请先登录哦")
         }
     }
-    func fav(){
-        if let user = LCApplication.default.currentUser{
-            
-        }else{
-            showTextHUD("请先登录哦")
-        }
-    }
+    
+   
 }
