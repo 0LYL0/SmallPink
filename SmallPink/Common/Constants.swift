@@ -69,7 +69,7 @@ let kMaxNoteTitleCount = 20
 let kMaxNoteTextCount = 2000
 let kNoteCommentPH = "精彩评论将被优先展示哦"
 
-//用户 
+//用户  
 let kMaxIntroCount = 100
 
 //话题
