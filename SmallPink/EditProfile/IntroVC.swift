@@ -10,6 +10,7 @@ import UIKit
 class IntroVC: UIViewController {
     
     var intro = ""
+    var delegate: IntroVCDelegate?
 
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var countLabel: UILabel!
@@ -25,6 +26,9 @@ class IntroVC: UIViewController {
     
     @IBAction func done(_ sender: Any) {
         
+        delegate?.updateIntro(textView.exactText)
+        
+        dismiss(animated: true)
     }
     
 
