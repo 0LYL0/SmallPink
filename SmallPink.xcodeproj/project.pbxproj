@@ -44,6 +44,11 @@
 		E44631072808FFF7008AFCE1 /* NoteEditVC-UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44631062808FFF7008AFCE1 /* NoteEditVC-UI.swift */; };
 		E446310928091423008AFCE1 /* MeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E446310828091423008AFCE1 /* MeVC.swift */; };
 		E44DD60B280655D0007A13A0 /* POIVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44DD60A280655D0007A13A0 /* POIVC.swift */; };
+		E4545FE32828BA65003D1D23 /* EditProfileTableVC-UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4545FE22828BA65003D1D23 /* EditProfileTableVC-UI.swift */; };
+		E4545FE5282A19D3003D1D23 /* MeVC-Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4545FE4282A19D3003D1D23 /* MeVC-Delegate.swift */; };
+		E4545FE8282A2195003D1D23 /* SettingTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4545FE7282A2195003D1D23 /* SettingTableVC.swift */; };
+		E4545FEA282A229A003D1D23 /* SettingTableVC-Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4545FE9282A229A003D1D23 /* SettingTableVC-Delegate.swift */; };
+		E4545FEC282A442F003D1D23 /* NotificationTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4545FEB282A442F003D1D23 /* NotificationTableVC.swift */; };
 		E476499C28002CE00069B535 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E476499B28002CE00069B535 /* HomeVC.swift */; };
 		E476499E280034BF0069B535 /* FollowVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E476499D280034BF0069B535 /* FollowVC.swift */; };
 		E47649A0280034DA0069B535 /* DiscoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E476499F280034DA0069B535 /* DiscoverVC.swift */; };
@@ -71,11 +76,18 @@
 		E4AF68CA2818DE7E0065C7A7 /* NoteDetailVC-DelNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF68C92818DE7E0065C7A7 /* NoteDetailVC-DelNote.swift */; };
 		E4AF68CC2818E32B0065C7A7 /* NoteDetailVC-Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF68CB2818E32B0065C7A7 /* NoteDetailVC-Helper.swift */; };
 		E4AF68CE2818ECA70065C7A7 /* NoteDetailVC-EditNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF68CD2818ECA70065C7A7 /* NoteDetailVC-EditNote.swift */; };
+		E4B76536282DFDD900ED0499 /* AccountTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B76535282DFDD900ED0499 /* AccountTableVC.swift */; };
+		E4B76539282E023200ED0499 /* AccountTableVC-Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B76538282E023200ED0499 /* AccountTableVC-Delegate.swift */; };
+		E4B7653B282E05FA00ED0499 /* PasswordTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B7653A282E05FA00ED0499 /* PasswordTableVC.swift */; };
+		E4B7653D282E342F00ED0499 /* DarkModeTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B7653C282E342F00ED0499 /* DarkModeTableVC.swift */; };
+		E4B8959D2822438900BB88C8 /* EditProfileTableVC-PHPickerVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B8959C2822438900BB88C8 /* EditProfileTableVC-PHPickerVCDelegate.swift */; };
 		E4C56E5628040F25002D9019 /* NoteEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C56E5528040F25002D9019 /* NoteEditVC.swift */; };
 		E4C56E5828041641002D9019 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C56E5728041641002D9019 /* PhotoCell.swift */; };
 		E4C56E5B28042E0F002D9019 /* PhotoFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C56E5A28042E0F002D9019 /* PhotoFooterView.swift */; };
 		E4CAADE1280E8DC60015FEDE /* SocialLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CAADE0280E8DC60015FEDE /* SocialLoginVC.swift */; };
 		E4CAADE3280E8DF50015FEDE /* SocialLoginVC-Alipay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CAADE2280E8DF50015FEDE /* SocialLoginVC-Alipay.swift */; };
+		E4CEBFF6282225CA00C14E94 /* EditProfileTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CEBFF5282225CA00C14E94 /* EditProfileTableVC.swift */; };
+		E4CEBFF828222C1900C14E94 /* EditProfileTableVC-Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CEBFF728222C1900C14E94 /* EditProfileTableVC-Delegate.swift */; };
 		E4D6FB372820C34D0064E56B /* MeVC-Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D6FB362820C34D0064E56B /* MeVC-Config.swift */; };
 		E4D6FB392820C4590064E56B /* MeVC-HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D6FB382820C4590064E56B /* MeVC-HeaderView.swift */; };
 		E4D6FB3B2820C92D0064E56B /* MeVC-EditIntro.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D6FB3A2820C92D0064E56B /* MeVC-EditIntro.swift */; };
@@ -230,6 +242,11 @@
 		E44631062808FFF7008AFCE1 /* NoteEditVC-UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteEditVC-UI.swift"; sourceTree = "<group>"; };
 		E446310828091423008AFCE1 /* MeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeVC.swift; sourceTree = "<group>"; };
 		E44DD60A280655D0007A13A0 /* POIVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIVC.swift; sourceTree = "<group>"; };
+		E4545FE22828BA65003D1D23 /* EditProfileTableVC-UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditProfileTableVC-UI.swift"; sourceTree = "<group>"; };
+		E4545FE4282A19D3003D1D23 /* MeVC-Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MeVC-Delegate.swift"; sourceTree = "<group>"; };
+		E4545FE7282A2195003D1D23 /* SettingTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableVC.swift; sourceTree = "<group>"; };
+		E4545FE9282A229A003D1D23 /* SettingTableVC-Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingTableVC-Delegate.swift"; sourceTree = "<group>"; };
+		E4545FEB282A442F003D1D23 /* NotificationTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableVC.swift; sourceTree = "<group>"; };
 		E476499B28002CE00069B535 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		E476499D280034BF0069B535 /* FollowVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowVC.swift; sourceTree = "<group>"; };
 		E476499F280034DA0069B535 /* DiscoverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverVC.swift; sourceTree = "<group>"; };
@@ -259,6 +276,11 @@
 		E4AF68C92818DE7E0065C7A7 /* NoteDetailVC-DelNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteDetailVC-DelNote.swift"; sourceTree = "<group>"; };
 		E4AF68CB2818E32B0065C7A7 /* NoteDetailVC-Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteDetailVC-Helper.swift"; sourceTree = "<group>"; };
 		E4AF68CD2818ECA70065C7A7 /* NoteDetailVC-EditNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteDetailVC-EditNote.swift"; sourceTree = "<group>"; };
+		E4B76535282DFDD900ED0499 /* AccountTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableVC.swift; sourceTree = "<group>"; };
+		E4B76538282E023200ED0499 /* AccountTableVC-Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountTableVC-Delegate.swift"; sourceTree = "<group>"; };
+		E4B7653A282E05FA00ED0499 /* PasswordTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTableVC.swift; sourceTree = "<group>"; };
+		E4B7653C282E342F00ED0499 /* DarkModeTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeTableVC.swift; sourceTree = "<group>"; };
+		E4B8959C2822438900BB88C8 /* EditProfileTableVC-PHPickerVCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditProfileTableVC-PHPickerVCDelegate.swift"; sourceTree = "<group>"; };
 		E4C56E522803B5F4002D9019 /* 闭包.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "闭包.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E4C56E532803F92D002D9019 /* 值类型+引用类型.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "值类型+引用类型.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E4C56E542803FFC0002D9019 /* ARC+循环引用.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "ARC+循环引用.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -268,6 +290,8 @@
 		E4C56E5A28042E0F002D9019 /* PhotoFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFooterView.swift; sourceTree = "<group>"; };
 		E4CAADE0280E8DC60015FEDE /* SocialLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginVC.swift; sourceTree = "<group>"; };
 		E4CAADE2280E8DF50015FEDE /* SocialLoginVC-Alipay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SocialLoginVC-Alipay.swift"; sourceTree = "<group>"; };
+		E4CEBFF5282225CA00C14E94 /* EditProfileTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTableVC.swift; sourceTree = "<group>"; };
+		E4CEBFF728222C1900C14E94 /* EditProfileTableVC-Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditProfileTableVC-Delegate.swift"; sourceTree = "<group>"; };
 		E4D6FB362820C34D0064E56B /* MeVC-Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MeVC-Config.swift"; sourceTree = "<group>"; };
 		E4D6FB382820C4590064E56B /* MeVC-HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MeVC-HeaderView.swift"; sourceTree = "<group>"; };
 		E4D6FB3A2820C92D0064E56B /* MeVC-EditIntro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MeVC-EditIntro.swift"; sourceTree = "<group>"; };
@@ -353,6 +377,8 @@
 				E481D2BE281E4AFE009644C9 /* Models */,
 				E47649A3280035080069B535 /* Home */,
 				E42B60462813ECFE00EDAA71 /* Me */,
+				E4CEBFF4282224E500C14E94 /* EditProfile */,
+				E4545FE6282A2171003D1D23 /* Setting */,
 				E4258037280CF0E1009B30BB /* Login */,
 				E40E781228050A4800065B5D /* NoteEdit */,
 				E49C1D062815325100E6F51F /* NoteDetail */,
@@ -421,9 +447,9 @@
 				E4D6FB3A2820C92D0064E56B /* MeVC-EditIntro.swift */,
 				E4D6FB3C2820C9DA0064E56B /* MeVC-EditOrFollow.swift */,
 				E4D6FB3E2820CB430064E56B /* MeVC-SettingOrChat.swift */,
+				E4545FE4282A19D3003D1D23 /* MeVC-Delegate.swift */,
 				E47916BA281F848200D94250 /* MeHeaderView.swift */,
 				E47916BC281F849100D94250 /* MeHeaderView.xib */,
-				E4D6FB5028212B2A0064E56B /* IntroVC.swift */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -585,6 +611,18 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		E4545FE6282A2171003D1D23 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				E4545FE7282A2195003D1D23 /* SettingTableVC.swift */,
+				E4545FE9282A229A003D1D23 /* SettingTableVC-Delegate.swift */,
+				E4545FEB282A442F003D1D23 /* NotificationTableVC.swift */,
+				E4B7653C282E342F00ED0499 /* DarkModeTableVC.swift */,
+				E4B76537282DFE1300ED0499 /* Account */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		E47649A3280035080069B535 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -639,6 +677,28 @@
 				E4E24897281BA8E300D70F74 /* ReplyCell.swift */,
 			);
 			path = NoteDetail;
+			sourceTree = "<group>";
+		};
+		E4B76537282DFE1300ED0499 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				E4B76535282DFDD900ED0499 /* AccountTableVC.swift */,
+				E4B76538282E023200ED0499 /* AccountTableVC-Delegate.swift */,
+				E4B7653A282E05FA00ED0499 /* PasswordTableVC.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		E4CEBFF4282224E500C14E94 /* EditProfile */ = {
+			isa = PBXGroup;
+			children = (
+				E4D6FB5028212B2A0064E56B /* IntroVC.swift */,
+				E4CEBFF5282225CA00C14E94 /* EditProfileTableVC.swift */,
+				E4545FE22828BA65003D1D23 /* EditProfileTableVC-UI.swift */,
+				E4CEBFF728222C1900C14E94 /* EditProfileTableVC-Delegate.swift */,
+				E4B8959C2822438900BB88C8 /* EditProfileTableVC-PHPickerVCDelegate.swift */,
+			);
+			path = EditProfile;
 			sourceTree = "<group>";
 		};
 		F9D03767A350AE5E583551EE /* Pods */ = {
@@ -797,6 +857,7 @@
 				E47916B9281F831D00D94250 /* MeVC-UI.swift in Sources */,
 				E42B60412813DD2300EDAA71 /* LC-Extensions.swift in Sources */,
 				E4209E832806D0CF004EAD01 /* POIVC-KeywordsSearch.swift in Sources */,
+				E4545FE8282A2195003D1D23 /* SettingTableVC.swift in Sources */,
 				E41CA114280522E400225DCD /* NoteEditVC-DragDrop.swift in Sources */,
 				E40A423E27FFEE31000C1BA0 /* SmallPink.xcdatamodeld in Sources */,
 				E481D2C0281E51EA009644C9 /* NoteDetailVC-DelReply.swift in Sources */,
@@ -806,11 +867,13 @@
 				E4D6FB4C282103EA0064E56B /* MyDraftNoteWaterfallCell.swift in Sources */,
 				E4D6FB3B2820C92D0064E56B /* MeVC-EditIntro.swift in Sources */,
 				E4D6FB492820D04C0064E56B /* NoteEditVC-Config.swift in Sources */,
+				E4B7653D282E342F00ED0499 /* DarkModeTableVC.swift in Sources */,
 				E406E83F2805BA1700DCBD04 /* Protocols.swift in Sources */,
 				E444839B28027F6700EF1D37 /* TabBarC.swift in Sources */,
 				E4F88EE528056D4600286F85 /* TextViewIAView.swift in Sources */,
 				E44483952802701000EF1D37 /* WaterfallVC.swift in Sources */,
 				E44631072808FFF7008AFCE1 /* NoteEditVC-UI.swift in Sources */,
+				E4545FEC282A442F003D1D23 /* NotificationTableVC.swift in Sources */,
 				E481D2C2281E7593009644C9 /* Other-Extensions.swift in Sources */,
 				E4C56E5B28042E0F002D9019 /* PhotoFooterView.swift in Sources */,
 				E47916BB281F848200D94250 /* MeHeaderView.swift in Sources */,
@@ -833,6 +896,7 @@
 				E4D6FB432820CD500064E56B /* WaterfallVC-DataSource.swift in Sources */,
 				E476499C28002CE00069B535 /* HomeVC.swift in Sources */,
 				E4E478B8281A268400A19465 /* CommentView.swift in Sources */,
+				E4545FE32828BA65003D1D23 /* EditProfileTableVC-UI.swift in Sources */,
 				E476499E280034BF0069B535 /* FollowVC.swift in Sources */,
 				E444839E28027FFC00EF1D37 /* PostVC.swift in Sources */,
 				E4D6FB412820CCF80064E56B /* WaterfallVC-Config.swift in Sources */,
@@ -841,6 +905,7 @@
 				E4E6CB642817C57A00E56D9E /* NoteDetailVC-Fav.swift in Sources */,
 				E435A26B280FA50D002D76A8 /* SocialLoginVC-Apple.swift in Sources */,
 				E4AF68C82818DB590065C7A7 /* NoteDetailVC-ShareOrMore.swift in Sources */,
+				E4CEBFF828222C1900C14E94 /* EditProfileTableVC-Delegate.swift in Sources */,
 				E49C1D0A2815417700E6F51F /* NoteDetailVC-UI.swift in Sources */,
 				E4D6FB372820C34D0064E56B /* MeVC-Config.swift in Sources */,
 				E4E24894281B77C600D70F74 /* NoteDetailVC-PostReply.swift in Sources */,
@@ -852,9 +917,13 @@
 				E4E6CB622817811100E56D9E /* NoteDetailVC-Like.swift in Sources */,
 				E4D6FB3F2820CB430064E56B /* MeVC-SettingOrChat.swift in Sources */,
 				E417DD932807E10A00A2A75D /* DraftNoteWaterfallCell.swift in Sources */,
+				E4B76539282E023200ED0499 /* AccountTableVC-Delegate.swift in Sources */,
+				E4545FEA282A229A003D1D23 /* SettingTableVC-Delegate.swift in Sources */,
 				E4EC3BDA281A7ADB00FF1698 /* NoteDetailVC-DelComment.swift in Sources */,
 				E44483A02802804800EF1D37 /* System-Extensions.swift in Sources */,
+				E4B7653B282E05FA00ED0499 /* PasswordTableVC.swift in Sources */,
 				E4E478BC281A29F400A19465 /* NoteDetailVC-TVDelegate.swift in Sources */,
+				E4545FE5282A19D3003D1D23 /* MeVC-Delegate.swift in Sources */,
 				E4AF68CE2818ECA70065C7A7 /* NoteDetailVC-EditNote.swift in Sources */,
 				E406E83D2805B23200DCBD04 /* ChannelTableVC.swift in Sources */,
 				E40A423627FFEE31000C1BA0 /* SceneDelegate.swift in Sources */,
@@ -868,15 +937,18 @@
 				E4E24892281B777D00D70F74 /* NoteDetailVC-PostComment.swift in Sources */,
 				E441D808280E9AC500049430 /* openssl_wrapper.m in Sources */,
 				E4E24896281B86E400D70F74 /* CommentSectionFooterView.swift in Sources */,
+				E4B8959D2822438900BB88C8 /* EditProfileTableVC-PHPickerVCDelegate.swift in Sources */,
 				E49C1D0E2815643B00E6F51F /* CustomViews.swift in Sources */,
 				E42C60FB280FF6EC0009B907 /* PasswordLoginVC.swift in Sources */,
 				E47649A2280034FB0069B535 /* NearbyVC.swift in Sources */,
 				E47916C1281FC56C00D94250 /* MeVC-BackOrDrawer.swift in Sources */,
+				E4B76536282DFDD900ED0499 /* AccountTableVC.swift in Sources */,
 				E4D6FB3D2820C9DA0064E56B /* MeVC-EditOrFollow.swift in Sources */,
 				E4D6FB472820D0050064E56B /* NoteEditVC-DraftNote.swift in Sources */,
 				E4CAADE1280E8DC60015FEDE /* SocialLoginVC.swift in Sources */,
 				E47649A5280035610069B535 /* Constants.swift in Sources */,
 				E47916C3281FC92F00D94250 /* CustomClasses.swift in Sources */,
+				E4CEBFF6282225CA00C14E94 /* EditProfileTableVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

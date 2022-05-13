@@ -1,4 +1,5 @@
 PODS:
+  - ActionSheetPicker-3.0 (2.7.1)
   - Alamofire (5.5.0)
   - AlipaySDK-iOS (15.8.8)
   - AMapFoundation (1.6.9)
@@ -50,6 +51,7 @@ PODS:
     - SteviaLayout (= 4.7.3)
 
 DEPENDENCIES:
+  - ActionSheetPicker-3.0
   - Alamofire
   - AlipaySDK-iOS
   - AMapLocation
@@ -74,6 +76,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - ActionSheetPicker-3.0
     - Alamofire
     - AlipaySDK-iOS
     - AMapFoundation
@@ -103,6 +106,7 @@ SPEC REPOS:
     - YPImagePicker
 
 SPEC CHECKSUMS:
+  ActionSheetPicker-3.0: 36da254b97a09ff89679ecb8b8510bd3e5bdc773
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
   AlipaySDK-iOS: 9289d94792535cd14c5c241c720a7e981edd7035
   AMapFoundation: 8d8ecbb0b2e9ce5487995360d26c885d94642bfd
@@ -131,6 +135,6 @@ SPEC CHECKSUMS:
   XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
   YPImagePicker: f36043210c10b0783034eb1947d6e06e31c461e4
 
-PODFILE CHECKSUM: 447327e4e1aca8a7e5f02121de20d90a45d6e22d
+PODFILE CHECKSUM: 944f8f91d9c2cfbb448184907f2331a128e60157
 
 COCOAPODS: 1.11.3

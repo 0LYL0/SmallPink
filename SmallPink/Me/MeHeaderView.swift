@@ -41,7 +41,7 @@ class MeHeaderView: UIView {
             idLabel.text = "\(user.getExactIntVal(kIDCol))"
             
             let intro = user.getExactStringVal(kIntroCol)
-            introLabel.text = intro.isEmpty ? "填写个人简介更容易获得关注哦,点击此处填写" : intro
+            introLabel.text = intro.isEmpty ? kIntroPH : intro
             
             guard let userObjectId = user.objectId?.stringValue else { return }
             let query = LCQuery(className: kUserInfoTable)

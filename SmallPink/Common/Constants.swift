@@ -22,6 +22,8 @@ let kDraftNotesNavID = "DraftNotesNavID"
 let kAuthorCol = "author"
 let kNoteDetailVCID = "NoteDetailVCID"
 let kIntroVCID = "IntroVCID"
+let kEditProfileNavID = "EditProfileNavID"
+let kSettingTableVCID = "SettingTableVCID"
 
 // Cell相关ID
 let kWaterfallCellID = "WaterfallCellID"
@@ -48,6 +50,7 @@ let imagePH = UIImage(named: "imagePH")!
 let kNameFromAppleID = "nameFromAppleID"
 let kEmailFromAppleID = "emailFromAppleID"
 let kDraftNoteCount = "draftNoteCount"
+let kUserInterfaceStyle = "userInterfaceStyle"
 // MARK: - CoreData
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
 let persistentContainer = appDelegate.persistentContainer
@@ -71,6 +74,8 @@ let kNoteCommentPH = "精彩评论将被优先展示哦"
 
 //用户  
 let kMaxIntroCount = 100
+let kIntroPH = "填写个人简介更容易获得关注哦,点击此处填写"
+let kNoCachePH = "无缓存"
 
 //话题
 let kAllSubChannels = [
@@ -106,6 +111,7 @@ let kAppScheme = "SmallPink"
 //正则表达式
 let KPhoneRegEx = "^1\\d{10}$"
 let KAuthCodeRegEx = "^\\d{6}$"
+let kPasswordRegEx = "^[0-9a-zA-Z]{6,16}$"
 
 //云端
 let kNotesOffSet = 10
@@ -135,6 +141,8 @@ let kAvatarCol = "avatar"
 let kIDCol = "id"
 let kGenderCol = "gender"
 let kIntroCol = "intro"
+let kBirthCol = "birth"
+let kIsSetPasswordCol = "isSetPassword"
 
 
 //Note表

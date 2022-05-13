@@ -6,84 +6,117 @@
 //
 
 import UIKit
+import LeanCloud
+
 
 class EditProfileTableVC: UITableViewController {
+    
+    var user: LCUser!
+    var delegate: EditProfileTableVCDelegate?
 
+    @IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet weak var nickNameLabel: UILabel!
+    @IBOutlet weak var genderLabel: UILabel!
+    @IBOutlet weak var birthLabel: UILabel!
+    @IBOutlet weak var introLabel: UILabel!
+    
+    var avatar: UIImage?{
+        didSet{
+            DispatchQueue.main.async {
+                self.avatarImageView.image = self.avatar
+            }
+        }
+    }
+    var nickName = ""{
+        didSet{
+            nickNameLabel.text = nickName
+        }
+    }
+    var gender = false{
+        didSet{
+//            guard let gender = gender else {
+//                return
+//            }
+            genderLabel.text = gender ? "男" : "女"
+        }
+    }
+    var birth: Date?{
+        didSet{
+            if let birth = birth {
+                birthLabel.text = birth.format(with: "yyyy-MM-dd")
+            }else{
+                birthLabel.text = "未填写"
+            }
+        }
+    }
+    var intro = ""{
+        didSet{
+            introLabel.text = intro.isEmpty ? "未填写" : intro
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUI()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+//        textField.inputView = genderPickerView
+//        tableView.addSubview(textField)
     }
+    
+    
 
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+    @IBAction func back(_ sender: Any) {
+        delegate?.updateUser(avatar, nickName, gender, birth, intro)
+        dismiss(animated: true)
     }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+//    lazy var textField: UITextField = {
+//        let textField = UITextField(frame: .zero)
+//
+//        return textField
+//    }()
+//
+//    lazy var genderPickerView: UIStackView = {
+//        let cancelBtn = UIButton()
+//        setToolBarBtn(cancelBtn, title: "取消", color: .secondaryLabel)
+//        let doneBtn = UIButton()
+//        setToolBarBtn(doneBtn, title: "完成", color: mainColor)
+//
+//        let toolBarView = UIStackView(arrangedSubviews: [cancelBtn, doneBtn])
+//        toolBarView.distribution = .equalSpacing
+//
+//        let pickerView = UIPickerView()
+////        pickerView.translatesAutoresizingMaskIntoConstraints = false
+////        pickerView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+//        pickerView.dataSource = self
+//        pickerView.delegate = self
+//
+//        let genderPickerView = UIStackView(arrangedSubviews: [toolBarView, pickerView])
+//        genderPickerView.frame.size.height = 150
+//        genderPickerView.axis = .vertical
+//        genderPickerView.spacing = 8
+//        genderPickerView.backgroundColor = .secondarySystemBackground
+//
+//
+//        return genderPickerView
+//    }()
+//    private func setToolBarBtn(_ btn: UIButton, title: String, color: UIColor){
+//        btn.setTitle(title, for: .normal)
+//        btn.titleLabel?.font = .systemFont(ofSize: 14)
+//        btn.setTitleColor(color, for: .normal)
+//        btn.contentEdgeInsets = UIEdgeInsets(top: 5, left: 8, bottom: 5, right: 8)
+//    }
 }
+
+//extension EditProfileTableVC: UIPickerViewDataSource, UIPickerViewDelegate{
+//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+//        1
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+//        2
+//    }
+//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//        ["男","女"][row]
+//    }
+//}

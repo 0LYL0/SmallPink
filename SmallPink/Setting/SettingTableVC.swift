@@ -6,84 +6,62 @@
 //
 
 import UIKit
+import Kingfisher
+import LeanCloud
 
 class SettingTableVC: UITableViewController {
+    
+    var user: LCUser!
 
+    @IBOutlet weak var cacheSizeLabel: UILabel!
+    
+    var cacheSizeStr = kNoCachePH{
+        didSet{
+            DispatchQueue.main.async {
+                self.cacheSizeLabel.text = self.cacheSizeStr
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        ImageCache.default.calculateDiskStorageSize { res in
+            if case let .success(size) = res{
+//                var cacheSize = ""
+//                if size > 0{
+//                    if size < 1024{
+//                        cacheSize = "\(size) B"
+//                    }else{
+//                        if size < 1048576{
+//                            cacheSize = "\(size / 1024) KB"
+//                        }else{
+//                            if size < 1073741824{
+//                                cacheSize = "\(size / 1048576) MB"
+//                            }else{
+//                                cacheSize = "\(size / 1073741824) GB"
+//                            }
+//                        }
+//                    }
+//                }else{
+//                    cacheSize = "无缓存"
+//                }
+                var cacheSizeStr: String{
+                    guard size > 0 else { return kNoCachePH }
+                    guard size >= 1024 else { return "\(size) B" }
+                    guard size >= 1048576 else { return "\(size / 1024) KB" }
+                    guard size >= 1073741824 else { return "\(size / 1048576) MB" }
+                    return "\(size / 1073741824) GB"
+                }
+                self.cacheSizeStr = cacheSizeStr
+            }
+        }
     }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if let accountTableVC = segue.destination as? AccountTableVC{
+            accountTableVC.user = user
+        }
     }
-    */
 
 }

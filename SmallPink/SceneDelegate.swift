@@ -20,6 +20,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         kStatusBarH = windowScene.statusBarManager?.statusBarFrame.height ?? 0
         
+        let userInterfaceStyle = UserDefaults.standard.integer(forKey: kUserInterfaceStyle)
+        if userInterfaceStyle == 1{
+            window?.overrideUserInterfaceStyle = .light
+        }else if userInterfaceStyle == 2{
+            window?.overrideUserInterfaceStyle = .dark
+        } 
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
